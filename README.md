@@ -1,94 +1,60 @@
-BlazeDemo Cypress Automation Suite
+# BlazeDemo Cypress Automation Suite
 
-This project contains an automated test suite for the BlazeDemo sample website (https://blazedemo.com
-).
-The tests are written in JavaScript, use Cypress, and follow the Page Object Model (POM) structure.
+This project contains an automated test suite for [https://blazedemo.com](https://blazedemo.com), built using **JavaScript**, **Cypress**, and the **Page Object Model (POM)** design pattern.
 
-1. What’s inside this project
-1.1 Main Test File
+---
 
-cypress/e2e/purchase.spec.js
+## Project Structure
 
-Contains all test scenarios
+### Main Test File
+- **`cypress/e2e/purchase.spec.js`**  
+  Contains all test scenarios and the core function **`purchaseEndToEnd()`**
 
-Includes the main reusable function purchaseEndToEnd()
+### Page Objects
+Located in **`cypress/support/page_objects/`**
+- **`homePage.js`**
+- **`reservePage.js`**
+- **`purchasePage.js`**
 
-1.2 Page Objects (POM)
+### Support Utilities
+- **`cypress/support/e2e.js`**  
+  Includes random data generator, helpers, and global hooks
 
-These files contain page-specific locators and reusable actions:
+### Configuration
+- **`cypress.config.js`**  
+- **`package.json`**
 
-cypress/support/page_objects/homePage.js
+---
 
-cypress/support/page_objects/reservePage.js
+## Function: `purchaseEndToEnd(deptCity, destCity, flightSeq)`
 
-cypress/support/page_objects/purchasePage.js
+- Accepts **3 optional parameters**  
+- Uses **random values** if parameters are missing  
+- Selects flight based on sequence  
+- Fills form with **dummy data**  
+- Validates:  
+  - **Status contains `"PendingCapture"`**  
+  - **Price > $100**  
+- Stops execution and logs reason if input is invalid  
 
-1.3 Support Utilities
+---
 
-cypress/support/e2e.js, which includes:
+## Test Scenarios
 
-Random user data generator
+1. **Boston, Berlin, 2**  
+2. **No parameters (random)**  
+3. **Boston, Boston, 1** 
+4. **Paris, Berlin, 0**  
+5. **Boston, London, 1** — custom input  
 
-Common helpers
-
-Global hooks
-
-1.4 Project Configuration
-
-cypress.config.js — Cypress settings
-
-package.json — scripts & dependencies
-
-2. How this project meets the requirements
-
-    i.   Language: JavaScript
-    ii.  Framework: Cypress
-    iii. Design Pattern: Page Object Model (POM)
-
-3. purchaseEndToEnd(deptCity, destCity, flightSeq)
-
-This function performs the complete flow:
-
-Accepts 3 optional parameters
-
-Generates random values when parameters are missing
-
-Selects the correct flight based on the sequence number
-
-Fills the purchase form with randomly generated dummy data
-
-Performs the required validations:
-
-Status should contain "PendingCapture"
-
-Price should be greater than $100
-
-Includes input validation — invalid input immediately stops the test and logs the reason
-
-4. Test Scenarios Included
-
- i.     Boston, Berlin, 2
- ii.    No parameters (all random)
- iii.   Boston, Boston, 1 — expected failure (same city)
- iv.    Paris, Berlin, 0 — expected failure (invalid flight number)
- v.     Boston, London, 1 — sample custom input
-
-These scenarios cover both successful cases and negative test cases.
-
-5. How to Run the Tests
-5.1 Install dependencies
-npm install
-
-5.2 Run all tests with report
-npm test
-
-5.3 Open Cypress UI
-npm run cypress:open
-
-5.4 Run headless
-npm run cypress:run
+---
 
 
-Reports will be generated in:
+## How to Run
 
-cypress/reports/
+```bash
+npm install           # Install dependencies
+npm test              # Run all tests with report
+npm run cypress:open  # Open Cypress UI
+npm run cypress:run   # Run in headless mode
+Reports are saved in cypress/reports/
