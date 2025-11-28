@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-28T19:36:17.825Z",
+    "end": "2025-11-28T19:36:38.427Z",
+    "duration": 20602,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9ef1feea-9d20-43a2-8bf7-5c93de67b453",
+      "title": "",
+      "fullFile": "cypress\\e2e\\purchase.spec.js",
+      "file": "cypress\\e2e\\purchase.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+          "title": "BlazeDemo Flight Purchase",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test Case 1: Boston → Berlin, Flight #2",
+              "fullTitle": "BlazeDemo Flight Purchase Test Case 1: Boston → Berlin, Flight #2",
+              "timedOut": null,
+              "duration": 6705,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "purchaseEndToEnd('Boston', 'Berlin', 2);",
+              "err": {},
+              "uuid": "0f7ceb3a-e323-41ee-b9ab-ad4da25be1e6",
+              "parentUUID": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test Case 2: Random flight",
+              "fullTitle": "BlazeDemo Flight Purchase Test Case 2: Random flight",
+              "timedOut": null,
+              "duration": 4498,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "purchaseEndToEnd();",
+              "err": {},
+              "uuid": "4cb858b5-8399-4240-9a5c-44fa8ff81adf",
+              "parentUUID": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test Case 3: Invalid same departure/destination",
+              "fullTitle": "BlazeDemo Flight Purchase Test Case 3: Invalid same departure/destination",
+              "timedOut": null,
+              "duration": 110,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(() => {\n  purchaseEndToEnd('Boston', 'Boston', 1);\n}).to.throw('cannot be the same');",
+              "err": {},
+              "uuid": "7bcd6740-e4b5-41b7-9a19-54809732d3d3",
+              "parentUUID": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test Case 4: Invalid flight number 0",
+              "fullTitle": "BlazeDemo Flight Purchase Test Case 4: Invalid flight number 0",
+              "timedOut": null,
+              "duration": 4630,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "let errorThrown = false;\ncy.on('fail', error => {\n  errorThrown = true;\n  expect(error.message).to.include('Invalid flight number: 0');\n});\npurchaseEndToEnd('Paris', 'Berlin', 0);\n// Verify error was thrown\ncy.wrap(null).then(() => {\n  expect(errorThrown, 'Expected error to be thrown for invalid flight number').to.be.true;\n});",
+              "err": {
+                "message": "AssertionError: expected 'Expected error to be thrown for invalid flight number: expected false to be true' to include 'Invalid flight number: 0'",
+                "estack": "AssertionError: expected 'Expected error to be thrown for invalid flight number: expected false to be true' to include 'Invalid flight number: 0'\n    at $Cy.eval (webpack://blazedemo_cypress/./cypress/e2e/purchase.spec.js:70:37)\n    at listener (https://blazedemo.com/__cypress/runner/cypress_runner.js:147868:19)\n    at arrayMap (https://blazedemo.com/__cypress/runner/cypress_runner.js:18631:23)\n    at map (https://blazedemo.com/__cypress/runner/cypress_runner.js:27600:14)\n    at $Cy.emitMap (https://blazedemo.com/__cypress/runner/cypress_runner.js:147870:14)\n    at parent.<computed> [as emitMap] (https://blazedemo.com/__cypress/runner/cypress_runner.js:147833:32)",
+                "diff": null
+              },
+              "uuid": "9624d601-ef4c-45ef-88a9-fe065c0330ba",
+              "parentUUID": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test Case 5: Any valid random input",
+              "fullTitle": "BlazeDemo Flight Purchase Test Case 5: Any valid random input",
+              "timedOut": null,
+              "duration": 4166,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "purchaseEndToEnd('Boston', 'London', 1);",
+              "err": {},
+              "uuid": "0339d817-9e30-4aaa-9b72-35a644ab5ce3",
+              "parentUUID": "60c821ab-88b9-4592-9ae6-ab3b5406ae65",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0f7ceb3a-e323-41ee-b9ab-ad4da25be1e6",
+            "4cb858b5-8399-4240-9a5c-44fa8ff81adf",
+            "7bcd6740-e4b5-41b7-9a19-54809732d3d3",
+            "0339d817-9e30-4aaa-9b72-35a644ab5ce3"
+          ],
+          "failures": [
+            "9624d601-ef4c-45ef-88a9-fe065c0330ba"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 20109,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": true,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

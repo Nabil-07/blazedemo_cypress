@@ -1,0 +1,25 @@
+{
+  "name": "blazedemo_cypress",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports,overwrite=true,html=false,json=true && npx marge cypress/reports/mochawesome.json --reportDir cypress/reports --inline && powershell -Command \"Copy-Item 'cypress\\\\reports\\\\cypress\\\\reports\\\\mochawesome.html' 'cypress\\\\reports\\\\index.html' -Force\"",
+    "test:headed": "cypress run --headed --reporter mochawesome --reporter-options reportDir=cypress/reports,overwrite=true,html=false,json=true && npx marge cypress/reports/mochawesome.json --reportDir cypress/reports --inline && powershell -Command \"Copy-Item 'cypress\\\\reports\\\\cypress\\\\reports\\\\mochawesome.html' 'cypress\\\\reports\\\\index.html' -Force\"",
+    "test:debug": "cypress run --headed --no-exit",
+    "test:chrome": "cypress run --headed --browser chrome",
+    "test:firefox": "cypress run --headed --browser firefox"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^15.7.0",
+    "faker": "^6.6.6",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  }
+}
